@@ -82,29 +82,3 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         ioloop.stop()
         session.close()
-
-'''
-    Standard HTTP
-        RequestHandler.write() automatically encodes dicts to JSON.
-        
-        To get/post form and access request body - 
-        
-        class MyFormHandler(tornado.web.RequestHandler):
-            def get(self):
-                self.write('<html><body><form action="/myform" method="POST">'
-                           '<input type="text" name="message">'
-                           '<input type="submit" value="Submit">'
-                           '</form></body></html>')
-
-            def post(self):
-                self.set_header("Content-Type", "text/plain")
-                self.write("You wrote " + self.get_body_argument("message"))
-        
-        To parse a request into JSON -
-        define this
-        def prepare(self):
-            if self.request.headers.get("Content-Type", "").startswith("application/json"):
-                self.json_args = json.loads(self.request.body)
-            else:
-                self.json_args = None
-'''
